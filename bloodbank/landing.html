@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LikeKosh</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ 
+  <!--font-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!--icons-->
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+<!--font-->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+  scroll-behavior: smooth;
+}
+
+    /* CSS for the video section */
+     #video-section {
+      position: relative;
+      height: 100vh; /* Adjust the height as needed */
+      overflow: hidden;
+    }
+
+    #homevideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: -1; /* Place the video behind other content */
+      transition: 0.5s;
+    }
+      /*_____________NAVBAR___________*/
+       .modal-backdrop.show {
+      background-color: black;
+      opacity: 0.5;
+    }
+
+    .modal {
+      background: #C3E8CC;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      height: 80%; /* Adjust the height as needed */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #C3E8CC;
+      text-align: center;
+      color: white;
+      border: none;
+    }
+
+    .modal-title {
+      display: none; /* Hide the modal title */
+    }
+
+    .modal-body {
+      font-size: 20px;
+      padding: 20px; /* Add padding for more height */
+    }
+
+    .modal-footer {
+      display: none;
+    }
+
+    .list-group {
+      margin: 0;
+      padding: 0;
+    }
+
+    .list-group-item {
+      background: none;
+      border: none;
+      padding: 10px; /* Increase the padding for more height */
+    }
+    /* Custom CSS for making navbar transparent */
+    .transparent-navbar {
+      background-color: transparent !important;
+
+    }
+    /* Change the text color of "About Us" and "Get Help" links to black */
+.navbar-nav .nav-item .nav-link {
+    color: black !important;
+}
+
+/* Change the text color of "About Us" and "Get Help" links when collapsed */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon,
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span {
+}
+/* Remove text decoration (e.g., underline) from links in list items */
+.list-group-item a {
+  text-decoration: none;
+  color: #4f606c;
+  font-weight: bold;
+}
+/* Apply custom font to navigation links */
+.nav-link {
+  font-family: "Patrick Hand SC", cursive;
+  font-size: 16px; /* Adjust the font size as needed */
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 15px; /* Add padding for a curvy appearance */
+  white-space: nowrap;
+}
+
+
+
+
+    /* Center content in the text-box for mobile devices */
+    .text-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: "Neuton", serif;
+      color: black;
+    }
+
+    .text-box h1 {
+      font-size: 40px;
+      font-family: "Neuton", serif;
+      letter-spacing: 4px;
+    }
+
+    .text-box p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    .hero-btn {
+      border-radius: 5px;
+      display: inline-block;
+      text-decoration: none;
+      color: black;
+      border: 2px solid black;
+      padding: 10px 20px;
+      font-size: 24px;
+      background: transparent;
+      margin-top: 20px;
+      font-family: "Patrick Hand SC", cursive;
+    }
+    .hero-btn:hover {
+  border: 1px solid #cd5c5c;
+  background: #cd5c5c;
+  transition: 1s;
+  font-weight: 300;
+}
+
+      /* Left-align content for larger screens (PC, iPad Mini, iPad Air, and Surface Pro 7) */
+@media (min-width: 768px) {
+  .text-box {
+    left: 10%;
+    transform: translate(0%, -50%);
+  }
+}
+
+/* Center-align content for mobile devices (nexthub and nexthub max) */
+@media (max-width: 767px) {
+  .text-box {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Center-align content for iPad Mini, iPad Air, and Surface Pro 7 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .text-box {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Center-align content for "nexthub max" (adjust the max-width as needed) */
+@media (max-width: 1280px) {
+  .text-box {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+ /*card description*/
+ .feature-box-1 {
+  padding: 32px;
+  box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+  margin: 15px 0;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  -moz-transition: ease all 0.35s;
+  -o-transition: ease all 0.35s;
+  -webkit-transition: ease all 0.35s;
+  transition: ease all 0.35s;
+  top: 0;
+}
+.feature-box-1 * {
+  -moz-transition: ease all 0.35s;
+  -o-transition: ease all 0.35s;
+  -webkit-transition: ease all 0.35s;
+  transition: ease all 0.35s;
+}
+.feature-box-1 .icon {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  background: #fc5356;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 50%;
+  margin-bottom: 22px;
+  font-size: 27px;
+}
+.feature-box-1 .icon i {
+  line-height: 70px;
+}
+.feature-box-1 h5 {
+  color: #20247b;
+  font-weight: 600;
+}
+.feature-box-1 p {
+  margin: 0;
+}
+.feature-box-1:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  border-radius: 10px;
+  width: 0;
+  background: #20247b;
+  z-index: -1;
+  -moz-transition: ease all 0.35s;
+  -o-transition: ease all 0.35s;
+  -webkit-transition: ease all 0.35s;
+  transition: ease all 0.35s;
+}
+.feature-box-1:hover {
+  top: -5px;
+}
+.feature-box-1:hover h5 {
+  color: #ffffff;
+}
+.feature-box-1:hover p {
+  color: rgba(255, 255, 255, 0.8);
+}
+.feature-box-1:hover:after {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  left: 0;
+  right: auto;
+}
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+.section-title {
+    padding-bottom: 45px;
+}
+.section-title h2 {
+    font-weight: 700;
+    color: #20247b;
+    font-size: 45px;
+    margin: 0 0 15px;
+    border-left: 5px solid #fc5356;
+    padding-left: 15px;
+}
+/*achivment*/
+CSS.g-6,
+.gx-6 {
+  --bs-gutter-x: 4.5rem;
+}
+.g-6,
+.gy-6 {
+  --bs-gutter-y: 4.5rem;
+}
+@media (min-width: 576px) {
+  .g-sm-6,
+  .gx-sm-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-sm-6,
+  .gy-sm-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .g-md-6,
+  .gx-md-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-md-6,
+  .gy-md-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .g-lg-6,
+  .gx-lg-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-lg-6,
+  .gy-lg-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .g-xl-6,
+  .gx-xl-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-xl-6,
+  .gy-xl-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 1400px) {
+  .g-xxl-6,
+  .gx-xxl-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-xxl-6,
+  .gy-xxl-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+.mb-6 {
+  margin-bottom: 4.5rem !important;
+}
+.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+.w-100px {
+  width: 100px !important;
+}
+.h-100px {
+  height: 100px !important;
+}
+@media (min-width: 576px) {
+  .mb-sm-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-sm-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 768px) {
+  .mb-md-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-md-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .mb-lg-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-lg-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  .mb-xl-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-xl-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 1400px) {
+  .mb-xxl-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-xxl-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+.bg-light {
+    background-color: white !important;
+}
+/* GALLARY */
+  .carousel-indicators li {
+            color: transparent;
+        }
+        .carousel {
+            margin-bottom: 20px; /* You can adjust the value as needed */
+        }
+
+        /*footer*/
+        
+        .footer-dark {
+    padding:50px 0;
+    color:#f0f9ff;
+    background-color:#282d32;
+  }
+  
+  .footer-dark h3 {
+    margin-top:0;
+    margin-bottom:12px;
+    font-weight:bold;
+    font-size:16px;
+  }
+  
+  .footer-dark ul {
+    padding:0;
+    list-style:none;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:0;
+  }
+  
+  .footer-dark ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.6;
+  }
+  
+  .footer-dark ul a:hover {
+    opacity:0.8;
+  }
+  
+  @media (max-width:767px) {
+    .footer-dark .item:not(.social) {
+      text-align:center;
+      padding-bottom:20px;
+    }
+  }
+  
+  .footer-dark .item.text {
+    margin-bottom:36px;
+  }
+  
+  @media (max-width:767px) {
+    .footer-dark .item.text {
+      margin-bottom:0;
+    }
+  }
+  
+  .footer-dark .item.text p {
+    opacity:0.6;
+    margin-bottom:0;
+  }
+  
+  .footer-dark .item.social {
+    text-align:center;
+  }
+  
+  @media (max-width:991px) {
+    .footer-dark .item.social {
+      text-align:center;
+      margin-top:20px;
+    }
+  }
+  
+  .footer-dark .item.social > a {
+    font-size:20px;
+    width:36px;
+    height:36px;
+    line-height:36px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+    margin:0 8px;
+    color:#fff;
+    opacity:0.75;
+  }
+  
+  .footer-dark .item.social > a:hover {
+    opacity:0.9;
+  }
+  
+  .footer-dark .copyright {
+    text-align:center;
+    padding-top:24px;
+    opacity:0.3;
+    font-size:13px;
+    margin-bottom:0;
+  }
+
+  </style>
+</head>
+<body style="height:1500px">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top transparent-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="Images/favicon.png" alt="" width="30" height="24">
+        <span style="color: red;"><strong>Life</strong></span><span style="color: blue;"><strong>Kosh</strong></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#rightPanelModal">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto"> <!-- ml-auto pushes the items to the right -->
+
+        <!-- Add About Us link -->
+        <li class="nav-item">
+        <a class="nav-link" href="http://localhost/bloodbank/abs.php">Blood samples</a>
+        </li>
+
+        <!-- Add Volunteer link -->
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/bloodbank/login.php">Login</a>
+        </li>
+
+        <!-- Add Donate link -->
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/bloodbank/register.php">Signup</a>
+        </li>
+        <!-- Add Get Help link -->
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost/bloodbank/index.php">Get help</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+ 
+  <div class="modal fade" id="rightPanelModal" tabindex="-1" aria-labelledby="rightPanelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <ul class="list-group">
+            <li class="list-group-item"><a href="http://localhost/bloodbank/abs.php">Blood samples</a></li>
+            <li class="list-group-item"><a href="http://localhost/bloodbank/login.php">login</a></li>
+            <li class="list-group-item"><a href="http://localhost/bloodbank/register.php">Sign Up</a></li>
+            <li class="list-group-item"><a href="http://localhost/bloodbank/index.php">Get help</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- VIDEO SECTION -->
+<section id="video-section">
+  <video autoplay muted loop playsinline id="homevideo">
+    <source src="video/homevideo1.mp4" type="video/mp4">
+  </video>
+  <div class="text-box">
+    <h1>Start</h1>
+    <h1>Saving Lives</h1>
+    <p>Become a donor or request for blood and help us to save lives</p>
+    <a href="http://localhost/bloodbank/login.php" class="hero-btn" target="_blank">Join Us</a>
+</div>
+
+</section>
+
+<!--ABOUT US -->
+   <<section class="section services-section" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title">
+                    <h2>What We Do</h2>
+                    <p>We connect hospitals with blood recipients and facilitate seamless blood booking.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Blood Donation Coordination</h5>
+                        <p>We excel at connecting hospitals with blood recipients for timely assistance.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-solid fa-download"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>User-Friendly Platform</h5>
+                        <p>Our user-friendly design simplifies registration and seamless blood transfer for all.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-solid fa-phone"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Emergency Response</h5>
+                        <p>In emergencies, our 24/7 helpline and chat support swiftly connect hospitals and recipients.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Educational Resources</h5>
+                        <p>Empowering and connecting potential donors with blood donation awareness.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                      <i class="fa fa-solid fa-user"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Community Empowerment</h5>
+                        <p>We amplify impact through community engagement and healthcare collaborations.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+            <!-- feaure box -->
+            <div class="col-sm-6 col-lg-4">
+                <div class="feature-box-1">
+                    <div class="icon">
+                        <i class="fa fa-solid fa-database"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h5>Blood Donor Database</h5>
+                        <p>We categorize data using multiple criteria to enhance the experience and access.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- / -->
+        </div>
+    </div>
+</section>
+<!-- Achievement 1 - HCF Bootstrap 5 Component -->
+<section class="bg-light mt-0">
+  <div class="container mb-5 mb-md-6">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6 text-center">
+        <h2 class="mb-4 display-5" style="font-family: 'Patrick Hand SC', cursive;">Achievements</h2>
+
+        <p class="text-secondary mb-4 mb-md-5">Relentless efforts, substantial impact, and a commitment to making a difference in our community.</p>
+        <hr class="w-50 mx-auto mb-0 text-secondary">
+      </div>
+    </div>
+  </div>
+  <div class="container overflow-hidden">
+    <div class="row gy-5 gy-md-6 gy-lg-0">
+      <div class="col-6 col-lg-3">
+        <div class="text-center">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle w-100px h-100px mb-3 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-people text-white" viewBox="0 0 16 16">
+              <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+            </svg>
+          </div>
+          <h5 class="display-6 fw-bold m-1">10K</h5>
+          <p class="text-secondary m-0">Happy Customers</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="text-center">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle w-100px h-100px mb-3 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-activity text-white" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z" />
+            </svg>
+          </div>
+          <h5 class="display-6 fw-bold m-1">1190+</h5>
+          <p class="text-secondary m-0">Issues Solved</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="text-center">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle w-100px h-100px mb-3 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-hospital l text-white" viewBox="0 0 16 16">
+              <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1V1Zm2 14h2v-3H7v3Zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3Zm0-14H6v1h4V1Zm2 7v7h3V8h-3Zm-8 7V8H1v7h3Z"/>
+            </svg>
+          </div>
+          <h5 class="display-6 fw-bold m-1">50</h5>
+          <p class="text-secondary m-0">Registered hospitals</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="text-center">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle w-100px h-100px mb-3 mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-award text-white" viewBox="0 0 16 16">
+              <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
+              <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+            </svg>
+          </div>
+          <h5 class="display-6 fw-bold m-1">7+</h5>
+          <p class="text-secondary m-0">Awwwards Winning</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--gallary-->
+    <div class="container text-center">
+        <h2 style="font-family: 'Patrick Hand SC', cursive;">Gallery</h2>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <!-- First Carousel -->
+                <div id="carousel1" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carousel1" data-bs-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="Images/doc1st.jpg" class="d-block w-100" alt="Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/doc2nd.jpg" class="d-block w-100" alt="Image 2">
+                        </div>
+                        <!-- Add more slides as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <!-- Second Carousel -->
+                <div id="carousel2" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carousel2" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carousel2" data-bs-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="Images/doc3rd.jpg" class="d-block w-100" alt="Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/doc4th.jpg" class="d-block w-100" alt="Image 2">
+                        </div>
+                        <!-- Add more slides as needed -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <!-- Third Carousel -->
+                <div id="carousel3" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carousel3" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carousel3" data-bs-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="Images/doc5th.jpg" class="d-block w-100" alt="Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/doc6th.jpg" class="d-block w-100" alt="Image 2">
+                        </div>
+                        <!-- Add more slides as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <!--footer-->
+    <div class="footer-dark">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Achivements</a></li>
+                        <li><a href="#">Gallary</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>LifeKosh</h3>
+                    <p>LifeKosh is a non-profit organization dedicated to making a positive impact. We provide support and resources to those in need, fostering a sense of community and well-being.</p>
+                </div>
+                <div class="col item social">
+                      <a href="#"><i class="icon iconify" data-icon="ion-social-facebook"></i></a>
+<a href="#"><i class="icon iconify" data-icon="ion-social-twitter"></i></a>
+<a href="#"><i class="icon iconify" data-icon="ion-social-snapchat"></i></a>
+<a href="#"><i class="icon iconify" data-icon="ion-social-instagram"></i></a>
+                </div>
+            </div>
+            <p class="copyright">LifeKosh © 2023</p>
+        </div>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
